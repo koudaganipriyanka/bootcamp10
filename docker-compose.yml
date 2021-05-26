@@ -1,0 +1,19 @@
+version: '3'
+services:
+  Mysql_db:
+    restart: always
+    container_name: docker-Mysql
+    image: Mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: My$q!@
+    ports:
+      - "6033:3306"
+  myweb_app:
+   image: priyanakkoudagani/mywebapp:1.0
+   conatiner_name: mywebapp
+   restart:on-failure
+   depends_on:
+     - Mysql_db
+  ports:
+   -"9090:80"     
+ 
